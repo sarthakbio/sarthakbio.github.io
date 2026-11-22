@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sarthak Singh — Bioengineering</title>
-<meta name="description" content="Sarthak Singh: bioengineer working at the intersection of microfluidics, applied physics and cellular immunotherapy. Master of Bioengineering, Rice University.">
+<title>Sarthak Singh — Biomedical Engineer · T cells &amp; Cancer Mechanotherapy</title>
+<meta name="description" content="Sarthak Singh: biomedical engineer working on T cells and cancer mechanotherapy, using focused ultrasound and microfluidics. Rice University.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -76,10 +76,19 @@
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
   .chip { font-size: 13px; padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); }
 
+  #bio-bg { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+  nav, header, section, footer { position: relative; z-index: 1; }
+  section, footer { background: color-mix(in srgb, var(--bg) 82%, transparent); }
+  header.hero { background: transparent; }
+  .card { background: color-mix(in srgb, var(--card) 92%, transparent); }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 30px; font-size: 13px; color: var(--muted); }
+  .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 7px; vertical-align: -1px; background: var(--c); }
   footer { padding: 40px 0 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 </style>
 </head>
 <body>
+
+<canvas id="bio-bg" aria-hidden="true"></canvas>
 
 <nav>
   <div class="wrap">
@@ -96,16 +105,19 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow">Bioengineering · Rice University</div>
-    <h1>Engineering better ways to make and measure immune cells.</h1>
-    <p class="lede">I'm a <strong>Master of Bioengineering</strong> candidate at Rice University working at the intersection of
+    <div class="eyebrow">Biomedical Engineer · T cells &amp; Cancer Mechanotherapy</div>
+    <h1>Using physical forces to tune T cells against cancer.</h1>
+    <p class="lede">I'm a <strong>biomedical engineer</strong> and Master of Bioengineering candidate at Rice University, working at the intersection of
       <strong>microfluidics, applied physics and cellular immunotherapy</strong>. In Dr. Michael King's lab I study
-      focused-ultrasound-mediated T-cell activation for CAR-T cell manufacturing. Long term, I want to lead an academic
+      how focused ultrasound, a form of <strong>mechanotherapy</strong>, can activate T cells for CAR-T cancer immunotherapy. Long term, I want to lead an academic
       lab in bioengineering.</p>
     <div class="links">
       <a class="btn primary" href="mailto:singhsarthak1509@gmail.com">Email me</a>
       <a class="btn" href="https://www.linkedin.com/in/sarthsingh" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="https://github.com/sarthakbio" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="legend" aria-hidden="true">
+      <span style="--c:#1aa59b">T cells</span><span style="--c:#e0735a">Tumor cells</span><span style="--c:#7a8cff">Ultrasound waves</span>
     </div>
   </div>
 </header>
@@ -264,5 +276,169 @@
   <div class="wrap">© 2026 Sarthak Singh · Houston, TX</div>
 </footer>
 
+<script>
+(() => {
+  const cv = document.getElementById("bio-bg");
+  const ctx = cv.getContext("2d");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dark = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+  let W, H, DPR, tcells = [], tumors = [], waves = [], t = 0, lastWave = 0;
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W * DPR; cv.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    const area = W * H;
+    const nT = Math.round(Math.min(34, Math.max(12, area / 42000)));
+    const nC = Math.round(Math.min(7, Math.max(3, area / 260000)));
+    tcells = Array.from({length: nT}, () => ({
+      x: rnd(0, W), y: rnd(0, H), r: rnd(7, 11), vx: rnd(-.25, .25), vy: rnd(-.25, .25),
+      ph: rnd(0, 6.28), spikes: Math.floor(rnd(14, 20)), act: 0
+    }));
+    tumors = Array.from({length: nC}, (_, i) => ({
+      x: rnd(W * .08, W * .92), y: rnd(H * .1, H * .9), r: rnd(26, 42),
+      lobes: Array.from({length: 9}, () => rnd(.82, 1.18)), ph: rnd(0, 6.28), hit: 0,
+      vx: rnd(-.06, .06), vy: rnd(-.06, .06)
+    }));
+  }
+
+  function colors() {
+    return dark()
+      ? {t: "92,196,188", c: "232,128,104", w: "140,155,255", nuc: "18,22,26"}
+      : {t: "15,140,132", c: "214,98,72", w: "96,110,235", nuc: "251,250,247"};
+  }
+
+  function drawTumor(c, k) {
+    const C = colors();
+    const pulse = 1 + .03 * Math.sin(t * .02 + c.ph) + .08 * c.hit;
+    ctx.beginPath();
+    const n = c.lobes.length;
+    for (let i = 0; i <= n; i++) {
+      const a = i / n * Math.PI * 2;
+      const rr = c.r * pulse * c.lobes[i % n] * (1 + .04 * Math.sin(t * .03 + i));
+      const x = c.x + Math.cos(a) * rr, y = c.y + Math.sin(a) * rr;
+      i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = `rgba(${C.c},${.10 + .10 * c.hit})`;
+    ctx.strokeStyle = `rgba(${C.c},${.42 + .3 * c.hit})`;
+    ctx.lineWidth = 1.4; ctx.fill(); ctx.stroke();
+    // irregular nuclei
+    ctx.beginPath(); ctx.ellipse(c.x + c.r * .12, c.y - c.r * .05, c.r * .38, c.r * .3, c.ph, 0, 6.28);
+    ctx.fillStyle = `rgba(${C.c},${.22 + .15 * c.hit})`; ctx.fill();
+    ctx.beginPath(); ctx.ellipse(c.x - c.r * .25, c.y + c.r * .2, c.r * .18, c.r * .14, -c.ph, 0, 6.28);
+    ctx.fill();
+  }
+
+  function drawT(p) {
+    const C = colors();
+    const a0 = .5 + .45 * p.act;
+    // TCR spikes / microvilli
+    ctx.strokeStyle = `rgba(${C.t},${.35 + .4 * p.act})`; ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = 0; i < p.spikes; i++) {
+      const a = i / p.spikes * 6.28 + p.ph + t * .004;
+      const L = p.r + 3 + 1.6 * Math.sin(t * .05 + i * 1.7) + 3 * p.act;
+      ctx.moveTo(p.x + Math.cos(a) * p.r, p.y + Math.sin(a) * p.r);
+      ctx.lineTo(p.x + Math.cos(a) * L, p.y + Math.sin(a) * L);
+    }
+    ctx.stroke();
+    const g = ctx.createRadialGradient(p.x - p.r * .3, p.y - p.r * .3, 1, p.x, p.y, p.r);
+    g.addColorStop(0, `rgba(${C.t},${.18 * a0 + .1})`); g.addColorStop(1, `rgba(${C.t},${.38 * a0 + .1})`);
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.28); ctx.fillStyle = g; ctx.fill();
+    ctx.strokeStyle = `rgba(${C.t},${.6 * a0 + .2})`; ctx.lineWidth = 1.2; ctx.stroke();
+    // large nucleus typical of lymphocytes
+    ctx.beginPath(); ctx.arc(p.x + .8, p.y + .5, p.r * .62, 0, 6.28);
+    ctx.fillStyle = `rgba(${C.t},${.35 * a0 + .15})`; ctx.fill();
+    if (p.act > .05) { // calcium / NFAT glow on activation
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r + 8 + 6 * p.act, 0, 6.28);
+      ctx.strokeStyle = `rgba(${C.t},${.18 * p.act})`; ctx.lineWidth = 3; ctx.stroke();
+    }
+  }
+
+  function drawWaves() {
+    const C = colors();
+    for (const w of waves) {
+      const alpha = Math.max(0, .32 * (1 - w.r / w.max));
+      for (let k = 0; k < 3; k++) {
+        const rr = w.r - k * 14;
+        if (rr <= 0) continue;
+        ctx.beginPath();
+        ctx.arc(w.x, w.y, rr, w.a0, w.a1);
+        ctx.strokeStyle = `rgba(${C.w},${alpha * (1 - k * .3)})`;
+        ctx.lineWidth = 1.6 - k * .4; ctx.stroke();
+      }
+    }
+  }
+
+  function step() {
+    t++;
+    if (!reduce && t - lastWave > 150) { // ultrasound pulse from a transducer at the left or bottom edge
+      lastWave = t;
+      const left = Math.random() < .5;
+      waves.push(left
+        ? {x: -40, y: rnd(H * .2, H * .8), r: 0, max: Math.hypot(W, H) * .9, a0: -.7, a1: .7}
+        : {x: rnd(W * .2, W * .8), y: H + 40, r: 0, max: Math.hypot(W, H) * .9, a0: Math.PI + .5, a1: 2 * Math.PI - .5});
+    }
+    for (const w of waves) w.r += 2.2;
+    waves = waves.filter(w => w.r < w.max);
+
+    for (const c of tumors) {
+      c.x += c.vx; c.y += c.vy;
+      if (c.x < c.r || c.x > W - c.r) c.vx *= -1;
+      if (c.y < c.r || c.y > H - c.r) c.vy *= -1;
+      c.hit *= .96;
+      for (const w of waves) if (Math.abs(Math.hypot(c.x - w.x, c.y - w.y) - w.r) < 10) c.hit = Math.min(1, c.hit + .2);
+    }
+    for (const p of tcells) {
+      // wavefronts mechanically stimulate T cells (mechanotherapy)
+      for (const w of waves) if (Math.abs(Math.hypot(p.x - w.x, p.y - w.y) - w.r) < 9) p.act = Math.min(1, p.act + .25);
+      p.act *= .992;
+      // activated cells home toward the nearest tumor cell
+      let best = null, bd = 1e9;
+      for (const c of tumors) { const d = Math.hypot(c.x - p.x, c.y - p.y); if (d < bd) { bd = d; best = c; } }
+      if (best && p.act > .15) {
+        const dx = best.x - p.x, dy = best.y - p.y, d = Math.max(1, Math.hypot(dx, dy));
+        const pull = .012 * p.act;
+        if (d > best.r + p.r + 4) { p.vx += dx / d * pull; p.vy += dy / d * pull; }
+        else { p.vx *= .85; p.vy *= .85; best.hit = Math.min(1, best.hit + .01); }
+      }
+      p.vx += rnd(-.02, .02); p.vy += rnd(-.02, .02);
+      const sp = Math.hypot(p.vx, p.vy), max = .35 + .5 * p.act;
+      if (sp > max) { p.vx *= max / sp; p.vy *= max / sp; }
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -20) p.x = W + 20; if (p.x > W + 20) p.x = -20;
+      if (p.y < -20) p.y = H + 20; if (p.y > H + 20) p.y = -20;
+    }
+  }
+
+  function synapses() {
+    const C = colors();
+    for (const p of tcells) for (const c of tumors) {
+      const d = Math.hypot(c.x - p.x, c.y - p.y);
+      if (d < c.r + p.r + 28 && p.act > .1) {
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(c.x, c.y);
+        ctx.strokeStyle = `rgba(${C.t},${.25 * p.act})`; ctx.setLineDash([2, 4]); ctx.lineWidth = 1; ctx.stroke(); ctx.setLineDash([]);
+      }
+    }
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    drawWaves();
+    tumors.forEach(drawTumor);
+    synapses();
+    tcells.forEach(drawT);
+    if (!reduce) { step(); requestAnimationFrame(frame); }
+  }
+
+  resize();
+  addEventListener("resize", resize);
+  if (reduce) { for (let i = 0; i < 400; i++) step(); }
+  frame();
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sarthak Singh — Bioengineering</title>
+<meta name="description" content="Sarthak Singh: bioengineer working at the intersection of microfluidics, applied physics and cellular immunotherapy. Master of Bioengineering, Rice University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfaf7; --ink: #1d2328; --muted: #5d6770; --line: #e4e1da;
+    --accent: #0f6e6a; --accent-soft: #e3f0ee; --card: #ffffff;
+    --serif: "Fraunces", Georgia, serif; --sans: "Inter", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #12161a; --ink: #e8ebee; --muted: #9aa5ae; --line: #262d33;
+            --accent: #5cc4bc; --accent-soft: #17302e; --card: #171c21; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.65 var(--sans); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  nav .name { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); }
+  nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 14px; }
+  nav ul a { color: var(--muted); }
+  nav ul a:hover { color: var(--ink); text-decoration: none; }
+  @media (max-width: 680px) { nav ul { display: none; } }
+
+  header.hero { padding: 88px 0 56px; }
+  .eyebrow { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(40px, 7vw, 64px); line-height: 1.05; margin: 14px 0 18px; }
+  .lede { font-size: 19px; color: var(--muted); max-width: 640px; margin: 0; }
+  .lede strong { color: var(--ink); font-weight: 500; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px;
+         border: 1px solid var(--line); background: var(--card); color: var(--ink); font-size: 14px; font-weight: 500; }
+  .btn:hover { border-color: var(--accent); text-decoration: none; }
+  .btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+  section { padding: 52px 0; border-top: 1px solid var(--line); }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 28px; margin: 0 0 24px; }
+  h3 { font-size: 17px; margin: 0; font-weight: 600; }
+  p { margin: 0 0 14px; }
+  .muted { color: var(--muted); }
+
+  .themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+  .card .tag { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent);
+               background: var(--accent-soft); padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+  .card p { font-size: 15px; color: var(--muted); margin: 8px 0 0; }
+
+  .timeline { display: grid; gap: 26px; }
+  .item { display: grid; grid-template-columns: 170px 1fr; gap: 20px; }
+  .item .when { color: var(--muted); font-size: 14px; padding-top: 2px; }
+  .item .where { color: var(--muted); font-size: 15px; margin: 2px 0 8px; }
+  .item ul { margin: 0; padding-left: 18px; color: var(--ink); font-size: 15px; }
+  .item li { margin: 4px 0; }
+  @media (max-width: 640px) { .item { grid-template-columns: 1fr; gap: 4px; } }
+
+  .list { display: grid; gap: 14px; }
+  .list .row { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding-bottom: 14px; border-bottom: 1px dashed var(--line); }
+  .list .row:last-child { border-bottom: none; }
+  .list .meta { color: var(--muted); font-size: 14px; white-space: nowrap; }
+  .badge { font-size: 12px; font-weight: 600; color: var(--accent); margin-left: 6px; }
+  @media (max-width: 640px) { .list .row { grid-template-columns: 1fr; gap: 2px; } }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .chip { font-size: 13px; padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); }
+
+  footer { padding: 40px 0 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="#top">Sarthak Singh</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#patents">Patents</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Bioengineering · Rice University</div>
+    <h1>Engineering better ways to make and measure immune cells.</h1>
+    <p class="lede">I'm a <strong>Master of Bioengineering</strong> candidate at Rice University working at the intersection of
+      <strong>microfluidics, applied physics and cellular immunotherapy</strong>. In Dr. Michael King's lab I study
+      focused-ultrasound-mediated T-cell activation for CAR-T cell manufacturing. Long term, I want to lead an academic
+      lab in bioengineering.</p>
+    <div class="links">
+      <a class="btn primary" href="mailto:singhsarthak1509@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/sarthsingh" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/sarthakbio" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<section id="research">
+  <div class="wrap">
+    <h2>Research</h2>
+    <div class="themes">
+      <div class="card">
+        <span class="tag">Current</span>
+        <h3>Focused ultrasound for T-cell activation</h3>
+        <p>Mapping acoustic pressure, duty cycle and exposure time against T-cell activation, with flow cytometry
+          and an EGFP-NFAT reporter, toward gentler, controllable CAR-T manufacturing.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Devices</span>
+        <h3>Microfluidic cell isolation</h3>
+        <p>Herringbone and size-plus-electrical-force devices for label-free T-cell, neuroblastoma and stem-cell
+          separation, designed in COMSOL and validated on patient-derived samples.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Delivery</span>
+        <h3>Lipid nanoparticle mixers</h3>
+        <p>Parametric design of microfluidic LNP mixing architectures for nucleic-acid delivery, from geometry
+          modeling to fabrication-ready CAD.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="item">
+        <div class="when">Jan 2026 – present</div>
+        <div>
+          <h3>Graduate Researcher, King Lab</h3>
+          <div class="where">BioScience Research Collaborative, Rice University</div>
+          <ul>
+            <li>Quantify dose-response relationships between focused-ultrasound parameters and T-cell activation.</li>
+            <li>Selected an EGFP-NFAT reporter from several fluorescent-fusion and linker designs using paired intensity and nuclear-translocation criteria.</li>
+            <li>Built a three-method verification workflow (colony PCR, restriction mapping, whole-plasmid sequencing) for a CRISPR/Cas9 HDR knock-in donor.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">Mar – May 2025</div>
+        <div>
+          <h3>Research Trainee, CAR-T &amp; Cell Therapy Centre</h3>
+          <div class="where">ACTREC, Tata Memorial Centre, Mumbai</div>
+          <ul>
+            <li>Validated a patented microfluidic T-cell isolation platform on patient-derived clinical samples, showing cell-therapy-grade selectivity.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">Sep 2023 – Dec 2024</div>
+        <div>
+          <h3>Research Trainee</h3>
+          <div class="where">CSIR–Central Drug Research Institute, Lucknow</div>
+          <ul>
+            <li>Purified HPV E6, PP1Y1 and PP1Y2 biomarkers by FPLC and built a gold-nanoparticle lateral-flow prototype for cervical cancer screening.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">Jun 2021 – Jun 2025</div>
+        <div>
+          <h3>Undergraduate Researcher, Microfluidics Lab</h3>
+          <div class="where">Dr. Jegatha Nambi Krishnan, BITS Pilani, Goa</div>
+          <ul>
+            <li>Invented a continuous-flow herringbone sensor for real-time CAR-T cell detection and isolation; validated COMSOL and Micro-PIV models against bench data.</li>
+            <li>Developed a label-free neuroblastoma purging and stem-cell isolation device, and a 96-well multiplexed ELISA-on-chip.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="list">
+      <div class="row"><div><h3>Rice University</h3><div class="muted">Master of Bioengineering</div></div><div class="meta">Expected May 2027</div></div>
+      <div class="row"><div><h3>BITS Pilani, K.K. Birla Goa Campus</h3><div class="muted">B.E. Chemical Engineering, First Division</div></div><div class="meta">2019 – 2023</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="patents">
+  <div class="wrap">
+    <h2>Patents <span class="muted" style="font-size:16px;font-family:var(--sans);font-weight:400">Indian patent applications, filed</span></h2>
+    <div class="list">
+      <div class="row"><div>Label-Free Microfluidic Device for Neuroblastoma Cell Purging and Stem Cell Isolation</div><div class="meta">202511059015 · 2025</div></div>
+      <div class="row"><div>Microfluidic Platform Integrating 96-Well Multiplexing for ELISA-Based Immuno-Sensing</div><div class="meta">202411064538 · 2024</div></div>
+      <div class="row"><div>Development of a Continuous Flow Sensor for CAR-T Cells</div><div class="meta">202111058598 · 2021</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <h2>Publications &amp; talks</h2>
+    <div class="list">
+      <div class="row"><div><strong>S. Singh</strong>, D. Choudhary, J. N. Krishnan. “Electrochemical Biosensors for Rare Cell Isolation.” <em>Miniaturized Electrochemical Devices</em>, CRC Press.<span class="badge">Book chapter</span></div><div class="meta">2023</div></div>
+      <div class="row"><div><strong>S. Singh</strong>, et al. “Enhancing Neuroblastoma Cell Purging with Passive Size-Based Separation in a Label-Free Device.” SACT, Tata Memorial Centre.<span class="badge">Oral · 1st runner-up</span></div><div class="meta">2025</div></div>
+      <div class="row"><div>A. Nisar, <strong>S. Singh</strong>, et al. “A Multifunctional Microfluidic Device for Multiproduct Cell Therapy Assay Development.” ISCT, New Orleans.<span class="badge">Oral</span></div><div class="meta">2025</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>Lab methods</h3><div class="chips">
+        <span class="chip">Flow cytometry &amp; FACS</span><span class="chip">Cell culture</span><span class="chip">CRISPR/Cas9</span>
+        <span class="chip">Gibson assembly</span><span class="chip">PCR / RT-PCR</span><span class="chip">Western blot</span>
+        <span class="chip">FPLC</span><span class="chip">Lateral flow assays</span><span class="chip">Focused ultrasound</span></div></div>
+      <div><h3>Design &amp; fabrication</h3><div class="chips">
+        <span class="chip">COMSOL</span><span class="chip">AutoCAD</span><span class="chip">PDMS soft lithography</span>
+        <span class="chip">Micro-PIV</span><span class="chip">Aspen Plus</span><span class="chip">Microfluidic design</span></div></div>
+      <div><h3>Computation &amp; analysis</h3><div class="chips">
+        <span class="chip">Python</span><span class="chip">CUDA</span><span class="chip">MATLAB</span>
+        <span class="chip">ImageJ</span><span class="chip">GraphPad Prism</span><span class="chip">Image-analysis pipelines</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <h2>Leadership &amp; awards</h2>
+    <div class="list">
+      <div class="row"><div>Master's Student Representative, BIOE Graduate Student Association, Rice University</div><div class="meta">2026 – 2027</div></div>
+      <div class="row"><div>Runner-Up, UQ Engineering Design Challenge</div><div class="meta">2021</div></div>
+      <div class="row"><div>Merit-cum-Need Scholarship, top 12% of the BITS Pilani cohort</div><div class="meta">2019</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p class="muted" style="max-width:600px">I'm applying to PhD programs in bioengineering for Fall 2027 and always happy to talk about
+      microfluidics, ultrasound and cell therapy. The best way to reach me is email.</p>
+    <div class="links">
+      <a class="btn primary" href="mailto:singhsarthak1509@gmail.com">singhsarthak1509@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/sarthsingh" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Sarthak Singh · Houston, TX</div>
+</footer>
+
+</body>
+</html>

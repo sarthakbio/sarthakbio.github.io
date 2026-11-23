@@ -84,6 +84,8 @@
   .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 30px; font-size: 13px; color: var(--muted); }
   .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 7px; vertical-align: -1px; background: var(--c); }
   footer { padding: 40px 0 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  .subhead { font-family: var(--sans); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 28px 0 14px; }
+  #projects .themes + .subhead { margin-top: 40px; }
 </style>
 </head>
 <body>
@@ -96,13 +98,13 @@
     <ul>
       <li><a href="#research">Research</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#patents">Patents</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#publications">Publications</a></li>
+      <li><a href="#awards">Awards</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
-
 <header class="hero" id="top">
   <div class="wrap">
     <div class="eyebrow">Biomedical Engineer · T cells &amp; Cancer Mechanotherapy</div>
@@ -126,75 +128,16 @@
   <div class="wrap">
     <h2>Research</h2>
     <div class="themes">
-      <div class="card">
-        <span class="tag">Current</span>
-        <h3>Focused ultrasound for T-cell activation</h3>
-        <p>Mapping acoustic pressure, duty cycle and exposure time against T-cell activation, with flow cytometry
-          and an EGFP-NFAT reporter, toward gentler, controllable CAR-T manufacturing.</p>
-      </div>
-      <div class="card">
-        <span class="tag">Devices</span>
-        <h3>Microfluidic cell isolation</h3>
-        <p>Herringbone and size-plus-electrical-force devices for label-free T-cell, neuroblastoma and stem-cell
-          separation, designed in COMSOL and validated on patient-derived samples.</p>
-      </div>
-      <div class="card">
-        <span class="tag">Delivery</span>
-        <h3>Lipid nanoparticle mixers</h3>
-        <p>Parametric design of microfluidic LNP mixing architectures for nucleic-acid delivery, from geometry
-          modeling to fabrication-ready CAD.</p>
-      </div>
+<div class="card"><span class="tag">Current</span><h3>Focused ultrasound for T-cell activation</h3><p>Mapping acoustic pressure, duty cycle and exposure time against T-cell activation, with flow cytometry and an EGFP-NFAT reporter, toward gentler, controllable CAR-T manufacturing.</p></div><div class="card"><span class="tag">Devices</span><h3>Microfluidic cell isolation</h3><p>Herringbone and size-plus-electrical-force devices for label-free T-cell, neuroblastoma and stem-cell separation, designed in COMSOL and validated on patient-derived samples.</p></div><div class="card"><span class="tag">Delivery</span><h3>Lipid nanoparticle mixers</h3><p>Parametric design of microfluidic LNP mixing architectures for nucleic-acid delivery, from geometry modeling to fabrication-ready CAD.</p></div>
     </div>
   </div>
 </section>
 
 <section id="experience">
   <div class="wrap">
-    <h2>Experience</h2>
+    <h2>Research experience</h2>
     <div class="timeline">
-      <div class="item">
-        <div class="when">Jan 2026 – present</div>
-        <div>
-          <h3>Graduate Researcher, King Lab</h3>
-          <div class="where">BioScience Research Collaborative, Rice University</div>
-          <ul>
-            <li>Quantify dose-response relationships between focused-ultrasound parameters and T-cell activation.</li>
-            <li>Selected an EGFP-NFAT reporter from several fluorescent-fusion and linker designs using paired intensity and nuclear-translocation criteria.</li>
-            <li>Built a three-method verification workflow (colony PCR, restriction mapping, whole-plasmid sequencing) for a CRISPR/Cas9 HDR knock-in donor.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="item">
-        <div class="when">Mar – May 2025</div>
-        <div>
-          <h3>Research Trainee, CAR-T &amp; Cell Therapy Centre</h3>
-          <div class="where">ACTREC, Tata Memorial Centre, Mumbai</div>
-          <ul>
-            <li>Validated a patented microfluidic T-cell isolation platform on patient-derived clinical samples, showing cell-therapy-grade selectivity.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="item">
-        <div class="when">Sep 2023 – Dec 2024</div>
-        <div>
-          <h3>Research Trainee</h3>
-          <div class="where">CSIR–Central Drug Research Institute, Lucknow</div>
-          <ul>
-            <li>Purified HPV E6, PP1Y1 and PP1Y2 biomarkers by FPLC and built a gold-nanoparticle lateral-flow prototype for cervical cancer screening.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="item">
-        <div class="when">Jun 2021 – Jun 2025</div>
-        <div>
-          <h3>Undergraduate Researcher, Microfluidics Lab</h3>
-          <div class="where">Dr. Jegatha Nambi Krishnan, BITS Pilani, Goa</div>
-          <ul>
-            <li>Invented a continuous-flow herringbone sensor for real-time CAR-T cell detection and isolation; validated COMSOL and Micro-PIV models against bench data.</li>
-            <li>Developed a label-free neuroblastoma purging and stem-cell isolation device, and a 96-well multiplexed ELISA-on-chip.</li>
-          </ul>
-        </div>
-      </div>
+<div class="item"><div class="when">Jan 2026 – present</div><div><h3>Graduate Researcher, King Lab</h3><div class="where">BioScience Research Collaborative, Rice University · PI: Dr. Michael King</div><ul><li>Map focused-ultrasound parameters (acoustic pressure, duty cycle, exposure duration) against T-cell activation and quantify dose-response by flow cytometry.</li><li>Screened fluorescent-fusion reporters (EGFP, mCherry, mScarlet-I) across linker designs and selected EGFP-NFAT using paired intensity and nuclear-translocation criteria.</li><li>Designed a CRISPR/Cas9 HDR donor for EGFP-NFAT knock-in at the AAVS1 safe-harbor locus in Jurkat T cells (Gibson/NEBuilder HiFi assembly, EF1α promoter, optimized homology arms).</li><li>Built a three-method verification workflow (colony PCR, restriction mapping, whole-plasmid sequencing) and resolved vector-background and linearization failures.</li><li>Wrote Python pipelines for NFAT-GFP nuclear/cytoplasmic ratio imaging from CZI time-lapse files and for publication-quality confocal-on-brightfield overlays of liposome-cell binding.</li><li>Work on microfluidic lipid nanoparticle (LNP) delivery systems in parallel with FUS, imaging and molecular workstreams.</li></ul></div></div><div class="item"><div class="when">Mar – May 2025</div><div><h3>Research Trainee, CAR-T &amp; Cell Therapy Centre</h3><div class="where">ACTREC, Tata Memorial Centre, Mumbai · Dr. Gaurav Narula</div><ul><li>Validated a patented microfluidic T-cell isolation platform on patient-derived clinical samples, showing cell-therapy-grade selectivity for manufacturing QC.</li><li>Contributed to next-generation CAR construct design, including SynNotch and drug-inducible architectures for solid tumors.</li><li>Patient blood-sample handling, flow cytometry and CAR-T characterization.</li></ul></div></div><div class="item"><div class="when">Sep 2023 – Dec 2024</div><div><h3>Research Trainee</h3><div class="where">CSIR–Central Drug Research Institute (CDRI), Lucknow</div><ul><li>Purified HPV E6, PP1Y1 and PP1Y2 biomarkers by FPLC, confirmed identity by Western blot and conjugated them to gold nanoparticles for a lateral-flow cervical-cancer screening prototype.</li><li>Clinical training in radiology, Pap collection and post-radiotherapy follow-up at King George's Medical University.</li></ul></div></div><div class="item"><div class="when">Jun 2021 – Jun 2025</div><div><h3>Undergraduate Researcher, Microfluidics Lab</h3><div class="where">BITS Pilani, Goa · Dr. Jegatha Nambi Krishnan</div><ul><li><strong>Continuous-flow CAR-T sensor</strong> (2021–2025): invented and patented a herringbone device for real-time T-cell detection, isolation and purification; COMSOL and Micro-PIV models validated against bench data, with ACTREC.</li><li><strong>Label-free neuroblastoma purging device</strong> (2024–2025): passive size-based plus electrical-force separation for high-purity tumor-cell purging and stem-cell recovery.</li><li><strong>96-well microfluidic ELISA-on-chip</strong> (2023–2024): multiplexed immunosensing platform for parallel biomarker detection.</li><li>Mentored undergraduate co-inventors across the three patent filings.</li></ul></div></div>
     </div>
   </div>
 </section>
@@ -203,8 +146,22 @@
   <div class="wrap">
     <h2>Education</h2>
     <div class="list">
-      <div class="row"><div><h3>Rice University</h3><div class="muted">Master of Bioengineering</div></div><div class="meta">Expected May 2027</div></div>
+      <div class="row"><div><h3>Rice University, Houston</h3><div class="muted">Master of Bioengineering · coursework in biomedical optics, drug delivery, GPU programming, deep learning for vision &amp; language</div></div><div class="meta">Expected May 2027</div></div>
       <div class="row"><div><h3>BITS Pilani, K.K. Birla Goa Campus</h3><div class="muted">B.E. Chemical Engineering, First Division</div></div><div class="meta">2019 – 2023</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <h3 class="subhead">Research &amp; engineering</h3>
+    <div class="themes">
+<div class="card"><span class="tag">King Lab · 2026</span><h3>CRISPR knock-in NFAT reporter line</h3><p>Stable EGFP-NFAT reporter at AAVS1 in Jurkat T cells, replacing transient expression for long-term, low-variability readout of ultrasound-driven NFAT translocation. Primers designed within the 60-nt oligo limit.</p></div><div class="card"><span class="tag">Imaging · 2026</span><h3>FUS activation imaging pipeline</h3><p>Python pipeline that segments nuclei and cytoplasm in CZI time-lapse stacks and reports NFAT-GFP translocation ratios for FUS-stimulated Jurkat cells, including a fix for mislabeled CZI channel metadata.</p></div><div class="card"><span class="tag">Imaging · 2026</span><h3>Confocal-on-widefield overlay tool</h3><p>Registration, thresholding and rendering of paired Zeiss confocal and brightfield files into publication-quality composites for liposome and nanoparticle binding experiments.</p></div><div class="card"><span class="tag">Microfluidics · 2026</span><h3>2S-DAH LNP mixer</h3><p>Two-Stage Dean-Augmented Herringbone mixer with growth-arrest for lipid nanoparticle formulation; parametric Python geometry with AutoCAD DXF and STL output.</p></div><div class="card"><span class="tag">BITS · 2021–2025</span><h3>Three patented microfluidic platforms</h3><p>CAR-T continuous-flow sensor, label-free neuroblastoma purging device and 96-well ELISA-on-chip, each modeled in COMSOL and fabricated in PDMS.</p></div><div class="card"><span class="tag">CDRI · 2023–2024</span><h3>Gold-nanoparticle lateral-flow assay</h3><p>Protein-to-device prototype for cervical cancer screening built from FPLC-purified HPV and PP1Y biomarkers.</p></div>
+    </div>
+    <h3 class="subhead">Coursework &amp; independent</h3>
+    <div class="themes">
+<div class="card"><span class="tag">BIOE 484/512</span><h3>Infinity-corrected digital microscope</h3><p>NA 0.15, 5× microscope from off-the-shelf optics with a 3D-printed four-module housing (OpenSCAD, STL, STEP); measured ~2.2 µm resolution, at the diffraction limit.</p></div><div class="card"><span class="tag">BIOE 415/515</span><h3>Biodegradable ophthalmic insert</h3><p>PCL insert with chitosan/hyaluronic-acid layer-by-layer coating for a burst-then-zero-order two-drug release; full proposal and pitch, extended into a 5050 startup-accelerator application.</p></div><div class="card"><span class="tag">BIOE 509</span><h3>Paper-and-tape switch ELISA</h3><p>Group project on a low-cost paper microfluidic ELISA; led Aim 3 of the final presentation.</p></div><div class="card"><span class="tag">Biomedical optics</span><h3>High-resolution microendoscope (HRME)</h3><p>Fluorescence imaging with proflavine; showed the system was sampling-limited by the fiber bundle (~5.5 µm measured) rather than by its optics.</p></div><div class="card"><span class="tag">COMP 646</span><h3>NanoGUI: small multi-agent GUI agent</h3><p>Team project replacing 7–72B GUI agents with ≤3B specialized vision-language models, using pointer-token grounding and sequential model loading; a single strong grounder beat larger multi-agent setups.</p></div><div class="card"><span class="tag">COMP 422/534</span><h3>GPU programming</h3><p>Parallel programming in CUDA, applied to simulation and image-analysis workloads.</p></div><div class="card"><span class="tag">Buildathon · 2026</span><h3>Builders Buildathon, team Biomakers</h3><p>Built a test-selection engine for the RWX Blast Radius track (coverage maps, import analysis) and a DuckDB data pipeline for the Databricks Shopping Sessions track.</p></div><div class="card"><span class="tag">Web · 2026</span><h3>This website</h3><p>Hand-built static site on GitHub Pages with a live canvas simulation of ultrasound-activated T cells attacking tumor cells.</p></div>
     </div>
   </div>
 </section>
@@ -213,20 +170,34 @@
   <div class="wrap">
     <h2>Patents <span class="muted" style="font-size:16px;font-family:var(--sans);font-weight:400">Indian patent applications, filed</span></h2>
     <div class="list">
-      <div class="row"><div>Label-Free Microfluidic Device for Neuroblastoma Cell Purging and Stem Cell Isolation</div><div class="meta">202511059015 · 2025</div></div>
-      <div class="row"><div>Microfluidic Platform Integrating 96-Well Multiplexing for ELISA-Based Immuno-Sensing</div><div class="meta">202411064538 · 2024</div></div>
-      <div class="row"><div>Development of a Continuous Flow Sensor for CAR-T Cells</div><div class="meta">202111058598 · 2021</div></div>
+<div class="row"><div>Label-Free Microfluidic Device for Neuroblastoma Cell Purging and Stem Cell Isolation</div><div class="meta">202511059015 · Jun 2025</div></div><div class="row"><div>Microfluidic Platform Integrating 96-Well Multiplexing for ELISA-Based Immuno-Sensing</div><div class="meta">202411064538 · Aug 2024</div></div><div class="row"><div>Development of a Continuous Flow Sensor for CAR-T Cells</div><div class="meta">202111058598 · Dec 2021</div></div>
     </div>
   </div>
 </section>
 
 <section id="publications">
   <div class="wrap">
-    <h2>Publications &amp; talks</h2>
+    <h2>Publications &amp; presentations</h2>
     <div class="list">
-      <div class="row"><div><strong>S. Singh</strong>, D. Choudhary, J. N. Krishnan. “Electrochemical Biosensors for Rare Cell Isolation.” <em>Miniaturized Electrochemical Devices</em>, CRC Press.<span class="badge">Book chapter</span></div><div class="meta">2023</div></div>
-      <div class="row"><div><strong>S. Singh</strong>, et al. “Enhancing Neuroblastoma Cell Purging with Passive Size-Based Separation in a Label-Free Device.” SACT, Tata Memorial Centre.<span class="badge">Oral · 1st runner-up</span></div><div class="meta">2025</div></div>
-      <div class="row"><div>A. Nisar, <strong>S. Singh</strong>, et al. “A Multifunctional Microfluidic Device for Multiproduct Cell Therapy Assay Development.” ISCT, New Orleans.<span class="badge">Oral</span></div><div class="meta">2025</div></div>
+<div class="row"><div><strong>S. Singh</strong>, D. Choudhary, J. N. Krishnan. “Electrochemical Biosensors for Rare Cell Isolation.” <em>Miniaturized Electrochemical Devices: Advanced Concepts, Fabrication and Applications</em>, CRC Press.<span class="badge">First-author book chapter</span></div><div class="meta">2023</div></div><div class="row"><div>A. Nisar, <strong>S. Singh</strong>, P. G. Joshi, K. R. Pandit, G. Narula, U. Mohanty, J. N. Krishnan. “A Multifunctional Microfluidic Device for Tailoring Analytical Assay Development for Multiproduct Cell Therapy Products.” ISCT 2025, New Orleans.<span class="badge">Oral</span></div><div class="meta">May 2025</div></div><div class="row"><div><strong>S. Singh</strong>, A. Nisar, G. Narula, U. Mohanty, I. Rodrigus. “Advancing 3Rs Adoption: Bridging Global Gaps &amp; Accelerating Cost-Effective Regulatory CGT Pathways in Asia Through 3D In Vitro Models.” ISCT 2025, New Orleans.<span class="badge">Poster</span></div><div class="meta">May 2025</div></div><div class="row"><div><strong>S. Singh</strong>, D. Arora, A. Kaul, A. Nisar, J. N. Krishnan. “Enhancing Neuroblastoma Cell Purging with Passive Size-Based Separation in a Label-Free Electrical Force Device.” SACT 2025, Tata Memorial Centre, Navi Mumbai.<span class="badge">First-author oral · Runner-up</span></div><div class="meta">Mar 2025</div></div><div class="row"><div><strong>S. Singh</strong>, et al. “Design of Continuous Flow Microfluidic Based Sensor for Analytical Characterization of Cell Therapy Products.” SACT 2023, ACTREC, Navi Mumbai.<span class="badge">Presentation</span></div><div class="meta">Sep 2023</div></div><div class="row"><div>5th National Students’ Research Convention, IIT Kanpur.<span class="badge">Oral</span></div><div class="meta">2023</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="wrap">
+    <h2>Honors &amp; awards</h2>
+    <div class="list">
+<div class="row"><div><strong>Runner-Up, Oral Presentation</strong>, SACT 2025, CAR-T &amp; Cell Therapy Centre, Tata Memorial Centre, for label-free neuroblastoma cell purging</div><div class="meta">Mar 2025</div></div><div class="row"><div><strong>Runner-Up, UQ Engineering Design Challenge</strong>, University of Queensland, for a flood-resilience and disaster-risk-reduction plan for Gorakhpur, India</div><div class="meta">Oct 2021</div></div><div class="row"><div><strong>Merit-cum-Need Scholarship</strong>, BITS Pilani: 25% tuition, awarded to the top ~12% of the 2019 incoming batch</div><div class="meta">2020 – 2023</div></div><div class="row"><div>Certificate of Completion, Rice Center for Career Development</div><div class="meta">2026</div></div><div class="row"><div>CITI Program certifications: Biomedical Research; Data or Specimens Only Research; Research with HIPAA Privacy</div><div class="meta">Current</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <h2>Leadership, teaching &amp; service</h2>
+    <div class="list">
+<div class="row"><div><strong>Master's Student Representative</strong>, Master of Bioengineering program, Rice; member, BIOE Graduate Student Association. Organize orientation and events for incoming students, including the MBE welcome social.</div><div class="meta">2026 – 2027</div></div><div class="row"><div><strong>Organizer, Diwali celebration</strong>, Indian Students at Rice, for about 250 attendees, with GSA funding</div><div class="meta">Nov 2026</div></div><div class="row"><div><strong>Co-organizer</strong>, international CAR-T workshop</div><div class="meta">2022</div></div><div class="row"><div><strong>Teaching Assistant</strong>, Introduction to Biomedical Engineering</div><div class="meta">BITS Pilani</div></div><div class="row"><div><strong>Core member, Nirmaan</strong>: taught children in the Zari community two to three times a week</div><div class="meta">BITS Pilani</div></div><div class="row"><div><strong>EdTech Intern</strong>, Million Sparks Foundation: helped K–12 teachers improve their teaching</div><div class="meta">Internship</div></div><div class="row"><div>Part-time library assistant and dining intern during the semester</div><div class="meta">Rice</div></div>
     </div>
   </div>
 </section>
@@ -235,27 +206,16 @@
   <div class="wrap">
     <h2>Skills</h2>
     <div class="skills">
-      <div><h3>Lab methods</h3><div class="chips">
-        <span class="chip">Flow cytometry &amp; FACS</span><span class="chip">Cell culture</span><span class="chip">CRISPR/Cas9</span>
-        <span class="chip">Gibson assembly</span><span class="chip">PCR / RT-PCR</span><span class="chip">Western blot</span>
-        <span class="chip">FPLC</span><span class="chip">Lateral flow assays</span><span class="chip">Focused ultrasound</span></div></div>
+      <div><h3>Cell &amp; molecular</h3><div class="chips">
+        <span class="chip">Flow cytometry &amp; FACS</span><span class="chip">Jurkat &amp; cancer cell culture</span><span class="chip">Cryopreservation</span><span class="chip">CRISPR/Cas9 RNP</span><span class="chip">HDR donor design</span>
+        <span class="chip">Gibson / NEBuilder HiFi</span><span class="chip">Colony PCR / RT-PCR</span><span class="chip">Restriction mapping</span><span class="chip">Western blot</span>
+        <span class="chip">FPLC</span><span class="chip">Lateral flow &amp; ELISA</span><span class="chip">Gold nanoparticles</span><span class="chip">Focused ultrasound</span><span class="chip">Patient samples</span></div></div>
       <div><h3>Design &amp; fabrication</h3><div class="chips">
-        <span class="chip">COMSOL</span><span class="chip">AutoCAD</span><span class="chip">PDMS soft lithography</span>
-        <span class="chip">Micro-PIV</span><span class="chip">Aspen Plus</span><span class="chip">Microfluidic design</span></div></div>
+        <span class="chip">COMSOL Multiphysics</span><span class="chip">AutoCAD</span><span class="chip">OpenSCAD</span><span class="chip">PDMS soft lithography</span><span class="chip">Paper microfluidics</span>
+        <span class="chip">Micro-PIV</span><span class="chip">Aspen Plus</span><span class="chip">Optical design</span><span class="chip">3D printing</span></div></div>
       <div><h3>Computation &amp; analysis</h3><div class="chips">
-        <span class="chip">Python</span><span class="chip">CUDA</span><span class="chip">MATLAB</span>
-        <span class="chip">ImageJ</span><span class="chip">GraphPad Prism</span><span class="chip">Image-analysis pipelines</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="leadership">
-  <div class="wrap">
-    <h2>Leadership &amp; awards</h2>
-    <div class="list">
-      <div class="row"><div>Master's Student Representative, BIOE Graduate Student Association, Rice University</div><div class="meta">2026 – 2027</div></div>
-      <div class="row"><div>Runner-Up, UQ Engineering Design Challenge</div><div class="meta">2021</div></div>
-      <div class="row"><div>Merit-cum-Need Scholarship, top 12% of the BITS Pilani cohort</div><div class="meta">2019</div></div>
+        <span class="chip">Python</span><span class="chip">CUDA</span><span class="chip">MATLAB</span><span class="chip">SQL / DuckDB</span><span class="chip">Vision-language models</span>
+        <span class="chip">ImageJ / Fiji</span><span class="chip">GraphPad Prism</span><span class="chip">Microscopy pipelines (CZI)</span><span class="chip">HTML / JS</span></div></div>
     </div>
   </div>
 </section>
